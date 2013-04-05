@@ -1,0 +1,52 @@
+#list{
+  /* padding-top: 10px; */
+}
+
+#SegmentedBar1{
+	padding-top: 5px;
+	padding-bottom:5px;
+	padding-left:5px;
+	padding-right:5px;
+	background-color:#F7F7F7;
+	border-bottom:thick;
+}
+
+#insb
+{
+margin-left:-210px ;
+
+ }
+  
+#trav
+{color:orange;
+	padding-left:0px; 
+}
+#inbut1
+{
+	color:white;
+	background:grey;
+	box-shadow:none;
+	width:5px;
+	height:12px;
+	padding-top: 3px;
+	border-top-left-radius:5px;
+	border-bottom-left-radius:5px;
+}
+#inbut3
+{
+	color:white;
+	background:grey;
+	box-shadow:none;
+	width:5px;
+	height:12px;
+	padding-top: 3px;
+	border-top-right-radius:5px;
+	border-bottom-right-radius:5px;
+}
+#inbut2
+{
+	width:5px;
+	height:12px;
+	padding-top:3px;
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #FFFFFF), color-stop(1, #959C90));
+}
