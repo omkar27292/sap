@@ -100,11 +100,11 @@
 			      var app=new sap.m.App("app");
 			      var page=new sap.m.Page("page");
 			      
-			      var img1= new sap.m.Image({
-						src: "a.png",
-						alt: "test image",
-						decorative: false,
-						densityAware: false,
+			      var img1= new sap.m.Button({
+					//	src: "a.png",
+					//	alt: "test image",
+					//	decorative: false,
+				 //		densityAware: false,
 						tap : function() {
 							pop.setPlacement(sap.m.PlacementType.Bottom);
 							pop.openBy(this);
@@ -118,7 +118,7 @@
 						//layoutData: new sap.m.FlexItemData({growFactor: 1})
 					});
 
-					var img2 = new sap.m.Image({
+				/*	var img2 = new sap.m.Image({
 						src: "b.png",
 						alt: "test image",
 						decorative: false,
@@ -132,7 +132,7 @@
 						decorative: false,
 						densityAware: false,
 						layoutData: new sap.m.FlexItemData({growFactor: 3})
-					});
+					});  */
 
 					var but1 = new sap.m.Button('but1', {
 						type: sap.m.ButtonType.Default,
