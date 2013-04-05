@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html>
+       <head>
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <link rel="stylesheet" type="text/css" href="index.css">
+           <script type="text/javascript" charset="utf-8" src="phonegap/cordova-1.6.0.js"></script>  
+     		   <script id="sap-ui-bootstrap"  
+            type="text/javascript"  
+            src="sapui5/resources/sap-ui-core.js"  
+            data-sap-ui-theme="sap_mvi"  
+            data-sap-ui-libs="sap.m">  
+            </script>  
+
+                     
+                 
+              <!-- only load the mobile lib "sap.m" and the "sap_mvi" theme -->
+              <style>
+             
+             .slide{
+             rigth:100px;
+             
+              }
+              
+              .sap-ios .mon,
+              .sap-android .mon {
+              vertical-align: baseline;
+              font-size: 15px;
+              font-weight : 600;
+              position: relative;
+              top: 0.6em;
+              padding-top:1px ;
+              
+              
+              }
+              
+              .sap-ios .bottom,
+              .sap-android .bottom {
+               vertical-align: baseline;
+                font-size: 15px;
+               font-weight : 600;
+               position: relative;
+               bottom: -0.8em;
+               padding-top:1px ;
+              
+              }
+              .sap-ios .dat,
+              .sap-android .dat{
+                font-size:32px;
+                 font-weight:bolder;
+                 padding-right:0px;
+                 padding-top:1px ;
+                 
+              
+              }
+              
+              
+              .sap-ios .sapMLabelCust001,
+              .sap-android .sapMLabelCust001 {
+                
+                font-size: 15px;
+                font-weight : bold;
+                display: inline-block;
+                }
+              
+             table {
+             border-collapse:collapse;
+              padding:0px;
+              cell-padding:0px;
+              
+                    }
+              
+              .sap-ios .titl,
+              .sap-android .titl {
+                color: "#ABABCD";
+                font-size: 17px;
+                color:orange;
+                font-weight : bold;
+                
+               
+                   }
+                  
+               
+                .sap-ios .detc,
+              .sap-android .detc{
+                     font-size:11px;
+                     font-weight : bold;               
+               
+               }
+               .sap-ios .cla,
+              .sap-android .cla{
+              font-weight : bold;
+              font-size:20px;
+              text-align:center;
+              }
+                 
+              </style>
+              
+			  
+   			  <script>
+			      var app=new sap.m.App("app");
+			      var page=new sap.m.Page("page");
+			      
+			      var img1= new sap.m.Image({
+						src: "a.png",
+						alt: "test image",
+						decorative: false,
+						densityAware: false,
+						tap : function() {
+							pop.setPlacement(sap.m.PlacementType.Bottom);
+							pop.openBy(this);
+							
+							$(document).ready(function(){
+								$("#__item0-list-1").hide();
+								$("#__item0-list-4").hide();
+							})
+							
+							;}
+						//layoutData: new sap.m.FlexItemData({growFactor: 1})
+					});
+
+					var img2 = new sap.m.Image({
+						src: "b.png",
+						alt: "test image",
+						decorative: false,
+						densityAware: false,
+						layoutData: new sap.m.FlexItemData({growFactor: 2})
+					});
+
+					var img3 = new sap.m.Image({
+						src: "c.png",
+						alt: "test image",
+						decorative: false,
+						densityAware: false,
+						layoutData: new sap.m.FlexItemData({growFactor: 3})
+					});
+
+					var but1 = new sap.m.Button('but1', {
+						type: sap.m.ButtonType.Default,
+						text: "ONE-WAY",
+						enabled: true,
+						tap:fetch1
+					});
+					var but2 = new sap.m.Button('but2', {
+						type: sap.m.ButtonType.Default,
+						text: "RETURN",
+						enabled: true,
+						tap : fetch2
+					});
+					
+					
+					var but3 = new sap.m.Button('but3', {
+						type: sap.m.ButtonType.Default,
+						text: "MULTI-CITY",
+						enabled: true,
+						tap: fetch3
+					});
+					
+					
+					var sb= new sap.m.SegmentedButton('SegmentedBar1', {
+						
+		  				buttons: [but1, but2, but3], 
+		  				selectedButton: but1,
+		  				visible: true,});
+					
+					
+					var list=new sap.m.List("list",{inset :false,
+						
+						});
+					
+				      var data = {
+								navigation : [ {
+									title:"DEPART",             //0th list item
+									date: "16",
+									description:" ",
+									day:"THURSDAY",
+									month:"May",
+									detail:"+/-2 days ",
+									clas:" ",
+									type: "Navigation"
+									
+								}, 
+								
+								{
+									title:"RETURN",                //1st list item
+									date: "18", 
+									description:" ",
+									day:"SATURDAY",
+									month:"May",
+									detail:" ",
+									type: "Navigation",
+									clas:" ",
+									visible:true
+									
+								},
+								
+								
+								{
+									title: "FROM",
+									date:" ",                      //2nd list item
+									description: "NYC All AIRPORTS(NYC)",
+									day:" ",
+									month:" ",
+									detail:"ALL airports(NYC) ",
+									clas:" ",
+									type: "Navigation"
+									
+								}, {
+									title: "TO",
+									date:" ",                         //3rd list item
+									description: "DEL New Delhi, India",
+									day:" ",
+								    month:" ",
+								    detail:"New Delhi,India",
+								    clas:" ",
+									type: "Navigation"
+								
+								},
+								
+								{
+									title:"",
+									date:" ",                        //4th list item, 
+									description: "CHOOSE FLIGHTS",
+									day:" " ,                          // 5th item is travellers in pop
+									month:" ",
+									detail:"",
+									type: "Navigation",
+									clas:" ",
+									visible:true
+									
+									
+								},
+								  
+								{
+									title:"CABIN",
+									date:" ",                        //4th list item, 
+									description: " ",
+									day:" " ,                          // 5th item is travellers in pop
+									month:" ",
+									detail:" ",
+									clas :"Business",
+									type: "Navigation",
+								    visible:true,
+									
+									
+								},
+								
+								
+								   
+								   
+								
+								
+								]
+				      };
+				      var oItemTemplateHtml = new sap.m.CustomListItem({
+		                     content: 
+		                     new sap.ui.core.HTML({
+		                           content: { path: "/title",
+		                           formatter: function() {
+		                        	      
+		                                  var data1 = this.getBindingContext();
+		                                 
+		                                  var title = "<div class='titl'>"+ data1.getProperty("title") + "</div>";
+		                                  var description = "<div class='sapMLabelCust001'>"+ data1.getProperty("description")+"</div>";
+		                                  var date= "<div class='dat'>"+ data1.getProperty("date")+"</div>";
+		                                  var month = "<div class='mon'>" + data1.getProperty("month")+"</div>";
+		                                  var det = "<div class='detc'>" + data1.getProperty("detail") + "</div>";
+		                                  var day="<div class='bottom'>"+data1.getProperty("day")+"</div>";
+		                                  var clas="<div class='cla'>"+data1.getProperty("clas")+"</div>"
+		                                  return "<table>" + 
+		                                                "<tr height:0px>" + 
+		                                                       "<td style='width:140px'>" + title + "</td>" +
+		                                                         "<td style='padding-left:0px;padding-right:0px'>"+description+date+clas+"</td>" +
+		                                                         "<td style='text-align:left'>"+month+day+"</td>"+
+		                                                         
+		                                                "</tr>" +
+		                                                "<tr>" +
+		                                                "<td>"+" "+"</td>"+
+		                                                "<td colspan='2'>"+ det +"</td>" +
+		                                                 "</tr>" +
+		                                         "</table>";
+		                           }
+		                           }}),
+		                        
+		                    //type : "{type}",
+		                     visible:"{visible}",
+		                     
+		                    // tap :"{tap}"
+		              });
+				      
+				      bindListData(data,oItemTemplateHtml,list);
+				      function bindListData(data, oItemTemplateHtml, list)
+						{
+							var oModel = new sap.ui.model.json.JSONModel();
+							oModel.setData(data);
+							list.setModel(oModel);
+
+							
+							list.bindAggregation("items", "/navigation", oItemTemplateHtml);
+						}
+				      
+				     
+				      
+				      var inbut1=new sap.m.Button("inbut1",
+							  {
+						  text:"+",
+						  tap:add
+						  
+						  
+							  });
+					  var inbut2=new sap.m.Button("inbut2",{
+						  text:"1"
+					  });
+					  var inbut3=new sap.m.Button("inbut3",{
+						  text:"-",
+						  tap:less
+					  });
+					  var insb=new sap.m.SegmentedButton("insb",{
+						  buttons: [inbut1, inbut2, inbut3], 
+			  		      visible: true
+			  		      
+					  });
+				      
+					  insb.setWidth('1px');
+					  
+				      function add(){
+						   var b=inbut2.getText();
+						 if(b<6){
+							 
+							 inbut2.setText(++b);
+							 
+						 }
+						  
+						  }
+						 function less(){
+							var g=inbut2.getText();
+							if(g>1){
+								inbut2.setText(--g);
+							}
+						 }
+						 function showcl() {
+								
+								popc.setPlacement(sap.m.PlacementType.Top);
+								popc.openBy(this);
+								          }
+				     
+				      list.addItem(new sap.m.InputListItem("trav",{label: 'TRAVELLERS', content: [
+				           
+				                                    insb  ]}));
+				      
+						
+				      oItemTemplateHtml.attachTap(showcl);
+				      function showcl() {
+							var a=this.getBindingContext();
+							alert(a);
+							popc.setPlacement(sap.m.PlacementType.Top);
+							popc.openBy(this);
+							          }
+				      
+				      var pop = new sap.m.Popover({
+							placement: sap.m.PlacementType.Top,
+							title: "Search Flights",
+							showHeader: true,
+							content: [
+                                        sb,
+                                        list
+									]
+				      }
+				      );
+				      
+				      var popc = new sap.m.Popover("popc",{
+							placement: sap.m.PlacementType.Top,
+							title: "Select Class",
+							showHeader: true,
+						
+				      }
+				      );
+				    
+			
+				      
+				      
+				     
+					
+				      function fetch1(){
+				    	  $("#but1").click(function(){
+					    		 $("#__item0-list-1").hide({marginLeft:10});
+					    		 $("#__item0-list-0").show({marginLeft:10});
+					    		 $("#__item0-list-2").show({marginLeft:10});
+					    		 $("#__item0-list-3").show({marginLeft:10});
+					    		 $("#__item0-list-4").hide({marginLeft:10});
+					    		 
+					    	  });
+				    	  
+				      }
+				      
+				      
+				      
+				      
+				      
+				      function fetch2(){
+				    	 
+				         	 $("#but2").click(function(){
+				    		 $("#__item0-list-0").show({marginLeft:10});
+				    		$("#__item0-list-1").show( {marginLeft:10});
+				    		
+				    		 $("#__item0-list-2").show({marginLeft:10});
+				    		 $("#__item0-list-3").show({marginLeft:10});
+				    		 $("#__item0-list-4").hide({marginLeft:10});
+				    	
+				    		 
+				    	  });  
+							
+						}
+				      
+				      
+				      
+				      function fetch3(){
+				    	  $("#but3").click($("#__item0-list-4").show({marginLeft:10}),function(){
+				    		     
+				    		       $("#__item0-list-0").hide({marginLeft:10});
+				    		       $("#__item0-list-1").hide({marginLeft:10});
+				    		       $("#__item0-list-2").hide({marginLeft:10});
+				    		       $("#__item0-list-3").hide({marginLeft:10});
+				    		     
+				    		  
+					    	  });
+				    	  
+				      }
+					var VB = new sap.m.VBox("vbox1", {
+						items:[
+                              img1,
+                              img2,
+                              img3,
+                              
+							
+							
+						]
+					});
+					page.addContent(VB);
+					app.addPage(page);
+					page.placeAt("content");
+
+   			  </script>
+
+       </head>
+       <body class="sapUiBody">
+              <div id="content"></div>
+       </body>
